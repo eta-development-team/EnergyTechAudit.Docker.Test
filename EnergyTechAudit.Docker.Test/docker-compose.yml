@@ -1,0 +1,15 @@
+﻿version: "3"
+services:
+        web:
+            image: "etadevelopmentleo/energytechauditdockertest:latest"
+            ports:
+                - "8080:80"
+            depends_on:
+                - sqlserver_docker
+        sqlserver_docker:
+            image: "mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04"
+            ports:
+                - "51433:1433"
+            environment:
+                SA_PASSWORD: "NC3pe4_1975#1923%Vkeux"
+                ACCEPT_EULA: "Y"

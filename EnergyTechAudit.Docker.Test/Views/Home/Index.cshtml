@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    #qrcode image {
+        margin: auto;
+    }
+</style>                                  
+<div id="qrcode" style="width:50%; margin: auto"></div>
+<script>
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) =>
+        {
+            const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+    const qrObject = {
+        uid: uuidv4(),
+        userId: 7,
+        userName: "eta.oper.leo",
+        hostBaseUrl: "http://eta24.ru",
+        setGeolocationByUserIdMethodUrl: "/intenalapi/setGeolocationByUserId",
+        getScheduleGeolocationByUserIdMethodUrl: "/intenalapi/getScheduleGeolocationByUserId"
+    }
+    new QRCode(document.getElementById("qrcode"),
+        {
+            text: JSON.stringify(qrObject),            
+            width: 512,
+            height: 512,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        }
+    );
+</script>
